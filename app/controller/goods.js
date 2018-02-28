@@ -32,6 +32,18 @@ class GoodsController extends Controller {
     const response = await this.ctx.model.Goods.remove({ _id: goodsID.id });
     this.ctx.body = response;
   }
+  async updateGoods() {
+    const goodsToUpdate = this.ctx.request.body;
+    const id = goodsToUpdate._id;
+    delete goodsToUpdate._id;
+    const response = await this.ctx.model.Goods.update({ _id: id }, goodsToUpdate);
+    this.ctx.body = response;
+  }
+  async findGoodsById() {
+    const id = this.ctx.request.body.id;
+    const response = await this.ctx.model.Goods.findOne({ _id: id });
+    this.ctx.body = response;
+  }
 }
 
 module.exports = GoodsController;

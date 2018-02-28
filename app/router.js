@@ -11,6 +11,8 @@ module.exports = app => {
   router.post('/saveGoods', controller.goods.saveGoods);
   router.post('/getGoodsByCatagory', controller.goods.getGoodsByCatagory);
   router.post('/deleteGoods', controller.goods.deleteGoods);
+  router.post('/findGoodsById', controller.goods.findGoodsById);
+  router.post('/updateGoods', controller.goods.updateGoods);
   // router.post('/upload', controller.upload.handlePictures);
   router.post('/upload', controller.upload.handlePictures);
 };
