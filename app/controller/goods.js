@@ -5,6 +5,7 @@ const Controller = require('egg').Controller;
 class GoodsController extends Controller {
   async getAllGoods() {
     const mongoData = await this.ctx.model.Goods.find({});
+    console.log(mongoData);
     this.ctx.body = mongoData;
   }
   async saveGoods() {
