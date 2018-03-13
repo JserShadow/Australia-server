@@ -7,6 +7,11 @@ class GoodsController extends Controller {
     const mongoData = await this.ctx.model.Goods.find({});
     this.ctx.body = mongoData;
   }
+  async getSingleGoods() {
+    const _id = this.ctx.request.body._id;
+    const thisGoods = await this.ctx.model.Goods.find({ _id: _id });
+    this.ctx.body = thisGoods;
+  }
   async saveGoods() {
     const content = this.ctx.request.body;
     const data = new this.ctx.model.Goods({
@@ -22,7 +27,8 @@ class GoodsController extends Controller {
     };
   }
   async getGoodsByCatagory() {
-    const { selectedCatagory } = this.ctx.request.body;
+    const selectedCatagory = this.ctx.request.body.catagory;
+    console.log(selectedCatagory);
     const foundData = await this.ctx.model.Goods.find({ catagory: selectedCatagory });
     this.ctx.body = foundData;
   }
